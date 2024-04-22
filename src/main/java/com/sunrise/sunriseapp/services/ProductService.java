@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import javax.swing.text.html.Option;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 public class ProductService extends BaseService<ProductDto, Product> {
 
@@ -51,7 +52,7 @@ public class ProductService extends BaseService<ProductDto, Product> {
 
         return existingProducts.stream()
                 .map(this::toDto)
-                .toList();
+                .collect(Collectors.toList());
     }
 
     @Override

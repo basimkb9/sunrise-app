@@ -1,2 +1,15 @@
-package com.sunrise.sunriseapp.dto;public class AuthenticationRequest {
+package com.sunrise.sunriseapp.dto;
+
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
+public class AuthenticationRequest {
+    private String email;
+    private String password;
 }

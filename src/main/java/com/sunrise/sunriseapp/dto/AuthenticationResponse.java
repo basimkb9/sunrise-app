@@ -1,2 +1,14 @@
-package com.sunrise.sunriseapp.dto;public class AuthenticationResponse {
+package com.sunrise.sunriseapp.dto;
+
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
+public class AuthenticationResponse {
+    private String token;
 }

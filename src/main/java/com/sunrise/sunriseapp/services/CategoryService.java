@@ -1,6 +1,7 @@
 package com.sunrise.sunriseapp.services;
 
 import com.sunrise.sunriseapp.dto.CategoryDto;
+import com.sunrise.sunriseapp.exception.RecordNotFoundException;
 import com.sunrise.sunriseapp.model.Category;
 import com.sunrise.sunriseapp.repository.CategoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,7 +45,8 @@ public class CategoryService extends BaseService<CategoryDto,Category> {
     @Override
     public CategoryDto getById(Long id) {
         Optional<Category> extractCategory = categoryRepository.findById(id);
-        return extractCategory.map(this::toDto).orElse(null);
+        return extractCategory.map(this::toDto)
+                .orElseThrow(() -> new RecordNotFoundException("Record was not found with id: " + id));
     }
 
     @Override
@@ -53,7 +55,7 @@ public class CategoryService extends BaseService<CategoryDto,Category> {
 
         return extractedCategories.stream()
                 .map(this::toDto)
-                .toList();
+                .collect(Collectors.toList());
     }
 
     @Override
